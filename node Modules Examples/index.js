@@ -1,16 +1,19 @@
-var rect = {
-    perimiter: (x,y) => (2*(x+y)),
-    area:  (x,y) => (x*y)
-};
+const rectangle = require('./rectangle');
+var rect = require('./rectangle')
 
 var solveRect = (l,b) =>{
     console.log("The solving rectange length is " + l +" and breadth is "+ b);
-    if(l<=0 || b<=0)
-        console.log("Length and Breadth of the rectangle should be greater than 0: l= " +l+ " b="+b)
-    else{
-        console.log("Area of the rectange is: "+ rect.area(l,b))
-        console.log("Peimiter of the rectangle is: " + rect.perimiter(l,b))
-    }
+    rect(l,b,(err,rectangle) => {
+        if(err){
+            console.log(err.message)
+        }
+        else{
+            console.log("The area of the rectangle with length= " +l +" and breadth= "
+                     +b +" is: " +rectangle.area() )
+            console.log("The perimeter of the rectangle with length= " +l +" and breadth= "
+                     +b +" is: " +rectangle.perimeter() )
+        }
+    })
 }
 
 
